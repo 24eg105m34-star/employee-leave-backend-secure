@@ -1,0 +1,3 @@
+package com.example.employeeleave;
+import org.springframework.boot.CommandLineRunner; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;
+@Configuration public class DataSeeder { @Bean CommandLineRunner seedLeaveTypes(LeaveTypeRepository repo){return args->{add(repo,"Casual Leave","Personal matters and short absences",12);add(repo,"Sick Leave","Illness and medical recovery",10);add(repo,"Earned Leave","Planned annual leave",20);add(repo,"Unpaid Leave","Leave beyond paid entitlement",30);};} private void add(LeaveTypeRepository r,String n,String d,int days){if(!r.existsByNameIgnoreCase(n))r.save(new LeaveType(n,d,days));}}
